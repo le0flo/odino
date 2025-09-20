@@ -23,25 +23,18 @@
       allowedTCPPorts = [ 22 ];
       allowedUDPPorts = [ 51820 ];
     };
-
-    wireguard.interfaces."home" = {
-      ips = [ "10.0.0.1/24" ];
-      listenPort = 51820;
+    
+    wireguard.interfaces."tunnel" = {
+      ips = [ "10.69.0.2/24" ];
       
-      privateKeyFile = "/home/leo/.wireguard/private";
+      privateKeyFile = "/home/leo/.wireguard/private.key";
 
       peers = [
         {
-          publicKey = "99XBoIZ55yradB45bDZ94fc1IQGkNp9argWaT2otRBU=";
-          allowedIPs = [ "10.0.0.2/32" ];
-        }
-        {
-          publicKey = "cR1TRWLX8DqZtOEOR7djqlX0ewy648h8oHaZkW9JUjU=";
-          allowedIPs = [ "10.0.0.3/32" ];
-        }
-        {
-          publicKey = "bMgACe4Pp2VQ0lpMb0Q2RVw/n5KIIg20xT90eesxcEw=";
-          allowedIPs = [ "10.0.0.4/32" ];
+          publicKey = "rwUMCdhjQbQt9uGjljfdABj4DSJFgL62bzT13sg8LmU=";
+          allowedIPs = [ "10.69.0.0/24" ];
+          endpoint = "leoflo.me:51820";
+          persistentKeepalive = 25;
         }
       ];
     };
