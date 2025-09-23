@@ -1,9 +1,11 @@
-{ inputs, config, pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
-    inputs.home-manager.nixosModules.home-manager
-    
     ./networking.nix
+    ./ssh.nix
+    ./programs.nix
+
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   # Boot
@@ -13,7 +15,7 @@
       efi.canTouchEfiVariables = true;
     };
   };
-  
+
   # Locales
   time.timeZone = "Europe/Rome";
   console.keyMap = "it";
@@ -30,7 +32,7 @@
     LC_TELEPHONE = "it_IT.UTF-8";
     LC_TIME = "it_IT.UTF-8";
   };
-  
+
   # Users
   users.users.leo = {
     isNormalUser = true;
@@ -45,56 +47,6 @@
     ];
   };
 
-  # NixOS
-  nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Packages
-  environment.systemPackages = with pkgs; [
-    # Home manager
-    inputs.home-manager.packages.${pkgs.stdenv.hostPlatform.system}.home-manager
-    
-    # Others
-    vim
-    htop
-    rsync
-    python313
-    wget
-    wireguard-tools
-  ];
-
-  # Zsh
-  programs.zsh.enable = true;
-
-  # Git
-  programs.git = {
-    enable = true;
-
-    config = {
-      init = {
-        defaultBranch = "master";
-      };
-      core = {
-        editor = "vim";
-      };
-    };
-  };
-  
-  # OpenSSH
-  services.openssh = {
-    enable = true;
-
-    settings = {
-      PermitRootLogin = "no";
-      PasswordAuthentication = false;
-      UsePAM = false;
-      PrintMotd = false;
-    };
-  };
-
-  # Docker
-  virtualisation.docker.enable = true;
-  
   # Version
   system.stateVersion = "25.05";
 }

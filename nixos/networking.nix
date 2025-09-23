@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   networking = {
     hostName = "odino";
 
@@ -13,20 +13,20 @@
       address = "192.168.1.1";
       interface = "eno1";
     };
-    
+
     nameservers = [ "208.67.222.222" "208.67.220.220" ];
     networkmanager.enable = true;
-    
+
     firewall = {
       enable = true;
 
       allowedTCPPorts = [ 22 ];
       allowedUDPPorts = [ 51820 ];
     };
-    
+
     wireguard.interfaces."tunnel" = {
       ips = [ "10.69.0.2/24" ];
-      
+
       privateKeyFile = "/home/leo/.wireguard/private.key";
 
       peers = [
@@ -40,4 +40,3 @@
     };
   };
 }
-

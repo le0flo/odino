@@ -14,7 +14,8 @@
 
       oh-my-zsh = {
         enable = true;
-        theme = "robbyrussell";
+        theme = "fishy";
+        plugins = [ "git" "ssh" ];
       };
 
       shellAliases = {
@@ -22,6 +23,7 @@
         l = "ls";
         ll = "ls -a";
         ssh = "TERM=xterm-256color ssh";
+
         update-system = "sudo nixos-rebuild switch --flake ~/odino";
         update-home = "home-manager switch --flake ~/odino";
       };
@@ -41,4 +43,3 @@
     };
   };
 }
-
