@@ -7,8 +7,6 @@
     vim
     htop
     rsync
-    python313
-    wget
     wireguard-tools
 
     # Home manager
