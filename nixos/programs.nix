@@ -3,6 +3,7 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Packages
   environment.systemPackages = with pkgs; [
     vim
     htop
