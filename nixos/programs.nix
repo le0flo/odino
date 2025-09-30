@@ -5,10 +5,8 @@
 
   # Packages
   environment.systemPackages = with pkgs; [
-    vim
-    htop
-    rsync
-    wireguard-tools
+    vim htop file
+    rsync wireguard-tools
 
     # Home manager
     inputs.home-manager.packages.${pkgs.stdenv.hostPlatform.system}.home-manager
