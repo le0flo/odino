@@ -1,19 +1,7 @@
 {...}: {
   networking = {
     hostName = "odino";
-
-    interfaces."eno1" = {
-      ipv4.addresses = [{
-        address = "192.168.1.250";
-        prefixLength = 24;
-      }];
-    };
-
-    defaultGateway = {
-      address = "192.168.1.1";
-      interface = "eno1";
-    };
-
+    
     nameservers = [ "208.67.222.222" "208.67.220.220" ];
     networkmanager.enable = true;
 
